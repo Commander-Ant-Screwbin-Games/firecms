@@ -68,7 +68,7 @@ class Mailer implements Core
      */
     public function send(string $to, string $subject, array $bindings, array $cc = [], array $bcc = [], string $template = 'default'): void
     {
-        $contents = file_get_contents($template);
+        $contents = file_get_contents($this->options['path'] . $template);
         foreach ($messageBindings as $key => $message) {
             $contents = str_replace('{{' . $key . '}}', $message, $contents);
         }
