@@ -3,6 +3,8 @@
  * Fire Content Management System - A simple and secure piece of art.
  */
 
+namespace FireCMS\Core;
+
 use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mailer\Messenger\MessageHandler;
 use Symfony\Component\Mailer\Messenger\SendEmailMessage;
