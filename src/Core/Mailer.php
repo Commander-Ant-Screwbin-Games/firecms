@@ -96,15 +96,15 @@ class Mailer implements Core
      */
     public function send(string $to, string $subject, array $bindings = [], array $cc = [], array $bcc = [], string $template = 'default'): void
     {
-        $contents = file_get_contents($this->options['path'] . $template);
+        $contents = file_get_contents(__DIR__ . '/../../' . $this->options['path'] . $template);
         foreach ($bindings as $key => $message) {
             $contents = str_replace('{{' . $key . '}}', $message, $contents);
         }
         $email = (new Email())
             ->from($this->options['form'])
             ->to($to)
-            ->cc($cc)
-            ->bcc($bcc)
+            ->cc(...$cc)
+            ->bcc(...$bcc)
             ->replyTo($this->options['reply_to'])
             ->subject($subject)
             ->html($contents);
