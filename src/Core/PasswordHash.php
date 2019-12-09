@@ -65,7 +65,7 @@ class PasswordHash implements Core
      */
     public function hash(string $password): string
     {
-        return password_hash($this->options['algo'], $password, $this->options);
+        return password_hash($password, $this->options['algo'], $this->options);
     }
 
     /**
