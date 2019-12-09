@@ -103,8 +103,11 @@ class PasswordHash implements Core
     private function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'algo' => PASSWORD_DEFAULT,
-            'cost' => 10,
+            'algo'        => PASSWORD_BCRYPT,
+            'cost'        => 10,
+            'memory_cost' => PASSWORD_ARGON2_DEFAULT_MEMORY_COST,
+            'time_cost'   => PASSWORD_ARGON2_DEFAULT_TIME_COST,
+            'threads'     =>P ASSWORD_ARGON2_DEFAULT_THREADS,
         ]);
         $resolver->setAllowedTypes('algo', 'int');
         $resolver->setAllowedTypes('cost', 'int');
