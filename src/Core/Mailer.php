@@ -2,7 +2,7 @@
 /**
  * Fire Content Management System - A simple and secure piece of art.
  *
- * @license MIT License. (https://github.com/omatamix/fire-content-management-system/blob/master/license)
+ * @license MIT License. (https://github.com/Commander-Ant-Screwbin-Games/firecms/blob/master/license)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -13,7 +13,7 @@
  * 
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ * https://github.com/Commander-Ant-Screwbin-Games/firecms/tree/master/src/Core
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -22,7 +22,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * @package omatamix/fire-content-management-system.
+ * @package Commander-Ant-Screwbin-Games/firecms.
  */
 
 namespace FireCMS\Core;
