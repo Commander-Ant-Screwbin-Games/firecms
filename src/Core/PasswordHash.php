@@ -77,7 +77,7 @@ class PasswordHash implements Core
      */
     public function needsRehash(string $hash): bool
     {
-        return password_needs_rehash($hash, $this->options);
+        return password_needs_rehash($hash, $this->options['algo'], $this->options);
     }
 
     /**
