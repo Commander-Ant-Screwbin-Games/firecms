@@ -63,7 +63,7 @@ class PasswordHash implements Core
      *
      * @return string Returns the hashed password.
      */
-    public function hash(string $password): string
+    public function hash(string $password = 'password'): string
     {
         return password_hash($password, $this->options['algo'], $this->options);
     }
