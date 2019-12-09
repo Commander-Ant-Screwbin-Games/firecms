@@ -53,7 +53,7 @@ class Mailer implements Core
     /** @var array $options The mailer options. */
     private $options = [];
 
-    /** @var \Symfony\Component\Mailer\Transport $transport The mailer transport. */
+    /** @var \Symfony\Component\Mailer\Transport\TransportInterface $transport The mailer transport. */
     private $transport;
 
     /**
@@ -69,7 +69,7 @@ class Mailer implements Core
         $this->configureOptions($resolver);
         $this->options = $resolver->resolve($options);
         $this->transport = Transport::fromDsn($this->options['dsn']);
-        $this->messageHandler = new MessageHandler($transport);
+        $this->messageHandler = new MessageHandler($this->transport);
         $this->bus = new MessageBus([
             new HandleMessageMiddleware(new HandlersLocator([
                 SendEmailMessage::class => [$this->messageHandler],
@@ -81,16 +81,16 @@ class Mailer implements Core
     /**
      * Attempt to send an email.
      *
-     * @param stirng $to       The email to send this message to.
+     * @param string $to       The email to send this message to.
      * @param string $subject  The email messages subject.
-     * @param string $bindings The message bindings to bind to the template.
+     * @param array  $bindings The message bindings to bind to the template.
      * @param array  $cc       The cc email addresses.
      * @param array  $bcc      The bcc email addresses.
      * @param string $template The mailer template to use to customize the email.
      *
      * @return void Returns nothing.
      */
-    public function send(string $to, string $subject, array $bindings, array $cc = [], array $bcc = [], string $template = 'default'): void
+    public function send(string $to, string $subject, array $bindings = [], array $cc = [], array $bcc = [], string $template = 'default'): void
     {
         $contents = file_get_contents($this->options['path'] . $template);
         foreach ($messageBindings as $key => $message) {
