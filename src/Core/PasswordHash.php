@@ -106,6 +106,7 @@ class PasswordHash implements Core
             'algo' => PASSWORD_DEFAULT,
             'cost' => 10,
         ]);
+        $resolver->setAllowedTypes('algo', 'int');
         $resolver->setAllowedTypes('cost', 'int');
         $resolver->setAllowedTypes('memory_cost', 'int');
         $resolver->setAllowedTypes('time_cost', 'int');
