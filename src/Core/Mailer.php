@@ -33,6 +33,7 @@ use Symfony\Component\Mailer\Messenger\SendEmailMessage;
 use Symfony\Component\Mailer\Transport;
 use Symfony\Component\Messenger\Handler\HandlersLocator;
 use Symfony\Component\Messenger\MessageBus;
+use Symfony\Component\Messenger\Middleware\HandleMessageMiddleware;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -46,6 +47,9 @@ class Mailer implements Core
 {
     /** @var \Symfony\Component\Messenger\MessageBus $bus The messenger bus. */
     private $bus;
+
+    /** @var \Symfony\Component\Mailer\Mailer $mailer The mailer instance. */
+    private $mailer;
 
     /** @var \Symfony\Component\Mailer\Messenger\MessageHandler $messageHandler The message handler. */
     private $messageHandler;
@@ -93,7 +97,7 @@ class Mailer implements Core
     public function send(string $to, string $subject, array $bindings = [], array $cc = [], array $bcc = [], string $template = 'default'): void
     {
         $contents = file_get_contents($this->options['path'] . $template);
-        foreach ($messageBindings as $key => $message) {
+        foreach ($bindings as $key => $message) {
             $contents = str_replace('{{' . $key . '}}', $message, $contents);
         }
         $email = (new Email())
