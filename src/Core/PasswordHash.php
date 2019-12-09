@@ -77,7 +77,7 @@ class PasswordHash implements Core
      */
     public function needsRehash(string $hash): bool
     {
-        return password_needs_rehash();
+        return password_needs_rehash($hash, $this->options);
     }
 
     /**
@@ -103,6 +103,7 @@ class PasswordHash implements Core
     private function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
+            'algo' => PASSWORD_DEFAULT,
             'cost' => 10,
         ]);
         $resolver->setAllowedTypes('cost', 'int');
