@@ -27,7 +27,7 @@
 
 namespace FireCMS\Core;
 
-use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mailer\Mailer as SymfonyMailer;
 use Symfony\Component\Mailer\Messenger\MessageHandler;
 use Symfony\Component\Mailer\Messenger\SendEmailMessage;
 use Symfony\Component\Mailer\Transport;
@@ -75,7 +75,7 @@ class Mailer implements Core
                 SendEmailMessage::class => [$this->messageHandler],
             ])),
         ]);
-        $this->mailer = new Mailer($this->transport, $this->bus);
+        $this->mailer = new SymfonyMailer($this->transport, $this->bus);
     }
 
     /**
