@@ -1,0 +1,39 @@
+{
+    "name": "commander-ant-screwbin-games/firecms",
+    "description": "FireCMS ___ A simple and secure piece of art.",
+    "homepage": "https://github.com/Commander-Ant-Screwbin-Games",
+    "keywords": [],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.3",
+        "symfony/amazon-mailer": "^5.0",
+        "symfony/asset": "^5.0",
+        "symfony/cache": "^5.0",
+        "symfony/debug": "^4.4",
+        "symfony/google-mailer": "^5.0",
+        "symfony/mailchimp-mailer": "^5.0",
+        "symfony/mailer": "^5.0",
+        "symfony/mailgun-mailer": "^5.0",
+        "symfony/messenger": "^5.0",
+        "symfony/options-resolver": "^5.0",
+        "symfony/polyfill-mbstring": "^1.12",
+        "symfony/polyfill-php72": "^1.12",
+        "symfony/polyfill-php73": "^1.12",
+        "symfony/postmark-mailer": "^5.0",
+        "symfony/sendgrid-mailer": "^5.0",
+        "symfony/string": "^5.0",
+    },
+    "require-dev": {
+        "vimeo/psalm": "^3",
+        "phpunit/phpunit": "^8.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "FireCMS\\": "./src"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    },
+    "prefer-stable": true
+}
