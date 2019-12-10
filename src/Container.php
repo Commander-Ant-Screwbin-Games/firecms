@@ -38,7 +38,7 @@ class Container
     /**
      * Load the the app container.
      *
-     * @param mixed $container The container to make static.
+     * @param mixed $appContainer The container to make static.
      *
      * @return void Returns nothing.
      */
