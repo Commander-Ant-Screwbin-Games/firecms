@@ -6,8 +6,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/Commander-Ant-Screwbin-Games/firecms/badge.svg?branch=master)](https://coveralls.io/github/Commander-Ant-Screwbin-Games/firecms?branch=master)
 [![composer.lock](https://poser.pugx.org/commander-ant-screwbin-games/firecms/composerlock)](https://packagist.org/packages/commander-ant-screwbin-games/firecms)
 
-Fire Content Management System is the basline for all Commander Ant Screwbin Games Web Servers.
-
 ## Installation
 
 via Composer:
