@@ -38,6 +38,8 @@ use function password_verify;
  */
 class PasswordHash implements Core
 {
+    /** @var int $algo The password hash algo. */
+    private $algo;
 
     /** @var array $options The password hash options. */
     private $options = [];
@@ -49,11 +51,12 @@ class PasswordHash implements Core
      *
      * @return void Returns nothing.
      */
-    public function __construct(array $options = [])
+    public function __construct(array $options = [], int $algo = PASSWORD_BCRYPT)
     {
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
         $this->options = $resolver->resolve($options);
+        $this->algo = $algo;
     }
 
     /**
@@ -65,7 +68,7 @@ class PasswordHash implements Core
      */
     public function hash(string $password = 'password'): string
     {
-        return password_hash($password, $this->options['algo'], $this->options);
+        return password_hash($password, $this->algo, $this->options);
     }
 
     /**
@@ -77,7 +80,7 @@ class PasswordHash implements Core
      */
     public function needsRehash(string $hash): bool
     {
-        return password_needs_rehash($hash, $this->options['algo'], $this->options);
+        return password_needs_rehash($hash, $this->algo, $this->options);
     }
 
     /**
@@ -102,14 +105,6 @@ class PasswordHash implements Core
      */
     private function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([
-            'algo'        => PASSWORD_BCRYPT,
-            'cost'        => 10,
-            'memory_cost' => PASSWORD_ARGON2_DEFAULT_MEMORY_COST,
-            'time_cost'   => PASSWORD_ARGON2_DEFAULT_TIME_COST,
-            'threads'     => PASSWORD_ARGON2_DEFAULT_THREADS,
-        ]);
-        $resolver->setAllowedTypes('algo', 'int');
         $resolver->setAllowedTypes('cost', 'int');
         $resolver->setAllowedTypes('memory_cost', 'int');
         $resolver->setAllowedTypes('time_cost', 'int');
