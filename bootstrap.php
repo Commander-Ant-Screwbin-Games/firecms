@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /**
  * Fire Content Management System - A simple and secure piece of art.
  *
