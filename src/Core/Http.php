@@ -87,7 +87,7 @@ class Http implements Core
      */
     public function escapeOutput(string $outputData): string
     {
-        return htmlentities($string, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        return htmlentities($outputData, ENT_QUOTES | ENT_HTML5, 'UTF-8');
     }
 
     /**
