@@ -29,18 +29,67 @@ namespace FireCMS\Core;
 
 use Error;
 use ParagonIE\CSPBuilder\CSPBuilder;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use function basename;
+use function ctype_alnum;
 use function file_get_contents;
 use function header;
 use function headers_sent;
+use function htmlentities;
 use function is_string;
+use function json_encode;
+use function preg_match;
 
 /**
  * The http class.
  */
 class Http implements Core
 {
+    /**
+     * Send an ajax call.
+     *
+     * @param array $responseData The response data returned.
+     * @param int   $responseCode The response code returned.
+     *
+     * @return void Returns nothing.
+     */
+    public function sendAjaxCall(array $responseData, int $responseCode): void
+    {
+        echo json_encode([
+            'data' => $responseData,
+            'code' => $responseCode,
+        ]);
+        exit;
+    }
+
+    /**
+     * Validate a file name.
+     *
+     * @param string $file The file name to validate.
+     *
+     * @return mixed Returns false if the file name is invalid or returns a valid file name.
+     */
+    public function validFileName(string $file)
+    {
+        $file = basename($file);
+        if (!ctype_alnum($file) || !preg_match('/^(?:[a-z0-9_-]|\.(?!\.))+$/iD', $file)) {
+            return false;
+        }
+        return $file;
+    }
+
+    /**
+     * Escape any unwanted characters that could be harmful.
+     *
+     * @param string $outputData The data to escape.
+     *
+     * @return string Returns safe output to the client-side.
+     */
+    public function escapeOutput(string $outputData): string
+    {
+        return htmlentities($string, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    }
+
     /**
      * Attempt to redirect the user to a new page.
      *
