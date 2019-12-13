@@ -44,15 +44,15 @@ class Http implements Core
     /**
      * Attempt to redirect the user to a new page.
      *
-     * @param string $url       The url to redirect to.
-     * @param bool   $permanent Is this a permanent redirection?
+     * @param string $url          The url to redirect to.
+     * @param int    $responseCode The custom response code to use.
      *
      * @return void Reutrns nothing.
      */
-    public static function redirect(string $url, bool $permanent = false): void
+    public static function redirect(string $url, int $responseCode = 302): void
     {
         if (!headers_sent()) {
-            header('Location: ' . $url, true, ($permanent === true) ? 301 : 302);
+            header('Location: ' . $url, true, $responseCode);
         } else {
             echo "<script>location.href='{$url}';</script>";
         }
