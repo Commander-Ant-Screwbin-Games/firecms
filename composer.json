@@ -7,6 +7,9 @@
     "require": {
         "php": ">=7.3",
         "commander-ant-screwbin-games/password-lock": "^4.0",
+        "paragonie/anti-csrf": "^2.2",
+        "paragonie/csp-builder": "^2.4",
+        "paragonie/easydb": "^2.10",
         "symfony/amazon-mailer": "^5.0",
         "symfony/asset": "^5.0",
         "symfony/cache": "^5.0",
