@@ -37,9 +37,6 @@ use Symfony\Component\Messenger\Middleware\HandleMessageMiddleware;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-use function file_get_contents;
-use function str_replace;
-
 /**
  * The mailer class.
  */
@@ -96,9 +93,9 @@ class Mailer implements Core
      */
     public function send(string $to, string $subject, array $bindings = [], array $cc = [], array $bcc = [], string $template = 'default'): void
     {
-        $contents = file_get_contents(__DIR__ . '/../../' . $this->options['path'] . $template);
+        $contents = \file_get_contents(__DIR__ . '/../../' . $this->options['path'] . $template);
         foreach ($bindings as $key => $message) {
-            $contents = str_replace('{{' . $key . '}}', $message, $contents);
+            $contents = \str_replace('{{' . $key . '}}', $message, $contents);
         }
         $email = (new Email())
             ->from($this->options['form'])
