@@ -33,7 +33,7 @@ namespace FireCMS;
 class Container
 {
     /** @var mixed $container The app container. */
-    private static $container = null;
+    private static $container = \null;
 
     /**
      * Load the the app container.
