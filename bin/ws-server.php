@@ -25,12 +25,13 @@
  * @package Commander-Ant-Screwbin-Games/firecms.
  */
 
+use ChatMatrix;
 use Ratchet\Server\IoServer;
 use Ratchet\Http\HttpServer;
 use Ratchet\WebSocket\WsServer;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-$server = IoServer::factory(new HttpServer(new WsServer(/** WS Handler */)), 8080);
+$server = IoServer::factory(new HttpServer(new WsServer(new ChatMatrix)), 8080);
 
 $server->run();
