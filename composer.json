@@ -8,6 +8,7 @@
         "php": ">=7.3",
         "commander-ant-screwbin-games/password-lock": "^4.0",
         "commander-ant-screwbin-games/directory": "^4.0",
+        "commander-ant-screwbin-games/session": "^4.0",
         "paragonie/anti-csrf": "^2.2",
         "paragonie/csp-builder": "^2.4",
         "paragonie/easydb": "^2.10",
